@@ -1,6 +1,6 @@
 # Taller TRG — Sistema de gestión moderno
 
-Stack: **React + Vite** → **Netlify** (gratis) + **Supabase** (gratis)
+Stack: **React + Vite** → **Vercel** (gratis) + **Supabase** (gratis)
 
 ---
 
@@ -54,23 +54,20 @@ npm run dev
 
 ---
 
-## ☁️ Desplegar en Netlify (gratis)
+## ☁️ Desplegar en Vercel (gratis)
 
-```bash
-npm run build
-```
-Arrastra la carpeta `dist/` al área de deploy manual de Netlify, o conecta el repo de GitHub para deploys automáticos.
+1. Entra a [vercel.com/new](https://vercel.com/new) e importa este repositorio de GitHub.
+2. Vercel detecta automáticamente el preset **Vite** (build command `vite build`, output `dist`).
+3. Añade las variables de entorno (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) antes de desplegar.
+4. Cada `git push` a `main` despliega automáticamente una nueva versión.
 
 ---
 
 ## ⚠️ Importante: pausa por inactividad
 
-Tanto **Supabase** como **Netlify** pausan los proyectos gratuitos tras un periodo sin uso:
+**Supabase** pausa los proyectos gratuitos tras ~7 días de inactividad. Para reactivarla: entra al dashboard → botón **"Restore project"**.
 
-- **Supabase**: pausa la base de datos tras ~7 días de inactividad. Para reactivarla: entra al dashboard → botón **"Restore project"**.
-- **Netlify**: el sitio puede quedar inaccesible tras mucha inactividad. Para reactivarlo: `npm run build` en local y vuelve a arrastrar la carpeta `dist/` al deploy manual.
-
-Para evitar esto en el futuro, lo más sencillo es conectar el repositorio de GitHub a Netlify, así cada cambio se despliega automáticamente y el sitio se mantiene activo.
+Vercel no requiere reactivación manual: al estar conectado directamente al repo, cada cambio se despliega solo.
 
 ---
 
@@ -97,7 +94,6 @@ taller-trg/
 │       ├── ClienteDetallePage.jsx
 │       ├── VehiculosPage.jsx
 │       └── VehiculoDetallePage.jsx
-├── netlify.toml
 ├── vite.config.js
 ├── tailwind.config.js
 └── package.json
