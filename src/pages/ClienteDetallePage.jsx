@@ -38,6 +38,14 @@ export default function ClienteDetallePage() {
     } catch(e) { alert(e.message) }
   }
 
+  const borrarCliente = async () => {
+    if (!confirm('¿Seguro que quieres eliminar este cliente? Esta acción no se puede deshacer.')) return
+    try {
+      await clientesApi.eliminar(id)
+      navigate('/clientes')
+    } catch(e) { alert(e.message) }
+  }
+
   if (loading) return (
     <div className="p-6 space-y-4">
       {[...Array(3)].map((_, i) => <div key={i} className="card h-24 animate-pulse bg-gray-100"/>)}
@@ -181,6 +189,17 @@ export default function ClienteDetallePage() {
               </Link>
             ))}
           </div>
+        </div>
+      )}
+
+      {!editing && cliente && (
+        <div className="flex justify-center pt-2 pb-4">
+          <button
+            onClick={borrarCliente}
+            className="text-xs text-gray-300 hover:text-red-400 transition-colors"
+          >
+            Eliminar este cliente
+          </button>
         </div>
       )}
     </div>

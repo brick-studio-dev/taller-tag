@@ -145,6 +145,14 @@ export default function VehiculoDetallePage() {
     } catch(e) { alert(e.message) }
   }
 
+  const borrarVehiculo = async () => {
+    if (!confirm('¿Seguro que quieres eliminar este vehículo? Esta acción no se puede deshacer.')) return
+    try {
+      await vehiculosApi.eliminar(id)
+      navigate('/vehiculos')
+    } catch(e) { alert(e.message) }
+  }
+
   if (loading) return (
     <div className="p-6 space-y-4">
       {[...Array(3)].map((_, i) => <div key={i} className="card h-24 animate-pulse bg-gray-100"/>)}
@@ -399,6 +407,17 @@ export default function VehiculoDetallePage() {
           </div>
         </>
       ) : null}
+
+      {!editing && vehiculo && (
+        <div className="flex justify-center pt-2 pb-4">
+          <button
+            onClick={borrarVehiculo}
+            className="text-xs text-gray-300 hover:text-red-400 transition-colors"
+          >
+            Eliminar este vehículo
+          </button>
+        </div>
+      )}
     </div>
   )
 }
