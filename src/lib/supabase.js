@@ -11,9 +11,30 @@ export const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true },
 })
 
+const MENSAJES_CONSTRAINT = {
+  vehiculos_matricula_key: 'Ya existe un vehículo registrado con esa matrícula.',
+  reparaciones_numero_orden_key: 'Error interno generando el número de orden. Inténtalo de nuevo.',
+}
+
+function traducirError(error) {
+  const constraint = error?.details?.match(/constraint "(\w+)"/)?.[1] || error?.message?.match(/constraint "(\w+)"/)?.[1]
+  switch (error?.code) {
+    case '23505': // unique_violation
+      return MENSAJES_CONSTRAINT[constraint] || 'Ya existe un registro con ese mismo valor.'
+    case '23502': // not_null_violation
+      return 'Falta rellenar un campo obligatorio.'
+    case '23503': // foreign_key_violation
+      return 'No se puede completar la operación porque hay datos relacionados que dependen de este registro.'
+    case '22P02': // invalid_text_representation
+      return 'Uno de los valores introducidos no tiene el formato correcto.'
+    default:
+      return null
+  }
+}
+
 export function dbError(error) {
   console.error('[Supabase]', error)
-  throw new Error(error?.message || 'Error de base de datos')
+  throw new Error(traducirError(error) || error?.message || 'Ha ocurrido un error al guardar los datos. Inténtalo de nuevo.')
 }
 
 // ── Helpers para enriquecer datos ─────────────────────────────
