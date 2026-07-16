@@ -66,7 +66,7 @@ export default function Layout() {
               <Gauge size={18} className="text-white" />
             </div>
             <div>
-              <p className="font-bold text-gray-900 leading-none">Taller TRG</p>
+              <p className="font-bold text-gray-900 leading-none">TRG Manager</p>
               <p className="text-xs text-gray-400 mt-0.5">Gestión de taller</p>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function Layout() {
             <div className="w-7 h-7 bg-brand-500 rounded-lg flex items-center justify-center">
               <Gauge size={14} className="text-white" />
             </div>
-            <span className="font-bold text-gray-900 text-sm">Taller TRG</span>
+            <span className="font-bold text-gray-900 text-sm">TRG Manager</span>
           </div>
         </header>
 

@@ -33,7 +33,7 @@ export default function LoginPage() {
           <div className="w-16 h-16 bg-brand-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-brand-500/30">
             <Gauge size={32} className="text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-white">Taller TRG</h1>
+          <h1 className="text-2xl font-bold text-white">TRG Manager</h1>
           <p className="text-gray-400 text-sm mt-1">Sistema de gestión</p>
         </div>
 
@@ -105,7 +105,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-gray-500 text-xs mt-6">
-          © {new Date().getFullYear()} Taller TRG · Todos los derechos reservados
+          © {new Date().getFullYear()} TRG Manager · Todos los derechos reservados
         </p>
       </div>
     </div>

@@ -1,4 +1,4 @@
-# Taller TRG — Sistema de gestión moderno
+# TRG Manager — Sistema de gestión moderno
 
 Stack: **React + Vite** → **Vercel** (gratis) + **Supabase** (gratis)
 
